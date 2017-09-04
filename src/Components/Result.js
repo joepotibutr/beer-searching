@@ -1,6 +1,7 @@
 import React, { Component } from 'react' 
-import { List } from 'semantic-ui-react'
-import { Img } from './Result.style'
+
+import { Img , Grid , Grids , BeerName , BeerImg , BeerDescription , Header } from './Result.style'
+
 
 export default class Result extends Component {
 
@@ -11,30 +12,25 @@ export default class Result extends Component {
     let beers = this.props.array 
 
 
-    const beerName = beers.map( (beer,index)=> 
-    <List.Header key={index}>{beer.name}</List.Header> )
-     
-    const beerImg = beers.map( (beer,index)=> 
-    <Img key={index} src={beer.ing_url} /> )
+    const beer = beers.map( (beer,index)=> 
 
-    
-
+    <Grid key={beer.id}>
+        <BeerImg justify={'center'} align={'center'}><Img src={beer.image_url}/></BeerImg>
+        <BeerName align={'center'}><h5>{beer.name}</h5></BeerName>
+        <BeerDescription align={'center'}><p>{beer.description}</p></BeerDescription>
+    </Grid>
+)
+   
     return (
-        
-        <List relaxed>
-            <p>Search Result : {beers.length}</p>
-        <List.Item>
-        
-          <List.Content>
+        <div>
+            <Header active={this.props.active} justify={'center'}align={'center'}><h1>Search Result : {beers.length} </h1>
+            </Header>
             
-            <List.Description>
-
-            </List.Description>
-          </List.Content>
-        </List.Item>
-        </List>
-
-     
+         <Grids>
+                 {beer} 
+                
+                 </Grids>
+                 </div>
     )
   }
 }

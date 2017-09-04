@@ -53,24 +53,20 @@ export default class SearchBar extends Component {
             <div>
                 <form onSubmit={this.onSubmitValue}>
                      <Flex>
-                <InputText value={this.state.term} type='text' placeholder="" 
-                   onChange={this.onInputChange}/>
+                        <InputText value={this.state.term} type='text' placeholder="" 
+                        onChange={this.onInputChange}/>
 
-                <ButtonSearch type='submit' icon='search'  onClick={() => this.setState({ active:!this.state.active }) }/>
-                </Flex>
+                        <ButtonSearch type='submit' icon='search'  onClick={() => this.setState({ active:!this.state.active }) }/>
+                    </Flex>
    
                 </form>
             </div>
        
                        
                        <SearchWrapper active={this.state.active}>
-                       <CloseBtn  onClick={() => this.setState({ active:!this.state.active , data:[] }) }>
-                    
-                    {this.state.active ? 'X':''}
-                  
-                </CloseBtn>
-                           <Result array={array}/>
-                           </SearchWrapper>
+                             <CloseBtn  onClick={() => this.setState({ active:!this.state.active , data:[] }) }>{this.state.active ? 'X':''} </CloseBtn>
+                           <Result array={array} active={this.state.active}/>
+                        </SearchWrapper>
             </Layout>
         )
     }

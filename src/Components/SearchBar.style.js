@@ -31,7 +31,6 @@ export const InputText = styled.input`
       top: 0;
       left: 0;
       background-color: white;
-      overflow: hidden;
       transition: 0.7s ease-in-out;
       text-align:center; 
       display:grid;
