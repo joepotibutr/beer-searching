@@ -13,5 +13,5 @@ export const Header = styled.h1`
 export const P = styled.p`
     color:white;
     font-size:2em;
-
+    font-weight:bold;
 `

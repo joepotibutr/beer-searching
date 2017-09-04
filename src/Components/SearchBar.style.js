@@ -16,6 +16,11 @@ export const InputText = styled.input`
     export const ButtonSearch = styled(Button)`
       background-color:black !important;
       color:white !important;
+      transition:.3s !important;
+      &: hover {
+        color: lightblue !important;
+        transform:scale(2) !important;
+      }
     `
 
     export const SearchWrapper = styled.div`

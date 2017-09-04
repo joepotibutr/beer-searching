@@ -16,14 +16,19 @@ export default class SearchBar extends Component {
         this.onInputChange = this.onInputChange.bind(this)
     }
     onSubmitValue(e){
+     
         e.preventDefault();
-        if(this.props.term.length > 0 || this.props.term !== undefined){
+        if(this.state.term.length){
             axios.get('https://api.punkapi.com/v2/beers/?beer_name=' + this.state.term)
             .then(res => this.setState({
                 data:res.data,
+                term:''
             }))
+            
         }
-        else return 
+        
+        else return console.log('pls insert any key')
+            
     }
     
 
@@ -48,7 +53,7 @@ export default class SearchBar extends Component {
             <div>
                 <form onSubmit={this.onSubmitValue}>
                      <Flex>
-                <InputText type='text' placeholder="" 
+                <InputText value={this.state.term} type='text' placeholder="" 
                    onChange={this.onInputChange}/>
 
                 <ButtonSearch type='submit' icon='search'  onClick={() => this.setState({ active:!this.state.active }) }/>
@@ -59,7 +64,7 @@ export default class SearchBar extends Component {
        
                        
                        <SearchWrapper active={this.state.active}>
-                       <CloseBtn  onClick={() => this.setState({ active:!this.state.active }) }>
+                       <CloseBtn  onClick={() => this.setState({ active:!this.state.active , data:[] }) }>
                     
                     {this.state.active ? 'X':''}
                   

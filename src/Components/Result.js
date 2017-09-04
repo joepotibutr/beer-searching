@@ -17,6 +17,8 @@ export default class Result extends Component {
     const beerImg = beers.map( (beer,index)=> 
     <Img key={index} src={beer.ing_url} /> )
 
+    
+
     return (
         
         <List relaxed>
@@ -26,7 +28,7 @@ export default class Result extends Component {
           <List.Content>
             
             <List.Description>
-                
+
             </List.Description>
           </List.Content>
         </List.Item>

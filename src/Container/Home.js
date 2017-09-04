@@ -15,7 +15,7 @@ export default class Home extends Component {
             
          </Layout>
          <Layout justify={'center'}>
-         <P >Insert your beer name's here</P>
+         <P >Search your beer name's here</P>
            </Layout>
         <Layout justify={'center'}>
             <SearchBar/>
