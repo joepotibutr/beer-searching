@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { InputText , ButtonSearch } from './SearchBar.style'
-import { Flex } from '../Theme/Grid'
-import { Icon , Form } from 'semantic-ui-react'
+import { InputText , ButtonSearch , SearchWrapper , CloseBtn } from './SearchBar.style'
+import { Flex , Layout } from '../Theme/Grid'
+import Result from './Result'
 import axios from 'axios'
 
 export default class SearchBar extends Component {
@@ -10,17 +10,20 @@ export default class SearchBar extends Component {
         this.state ={
             term:'',
             data:[],
+            active:false
         }
         this.onSubmitValue = this.onSubmitValue.bind(this)
         this.onInputChange = this.onInputChange.bind(this)
     }
-    onSubmitValue(){
-    
-        axios.get('https://api.punkapi.com/v2/beers/?beer_name=' + this.state.term)
-        .then(res => this.setState({
-            data:res.data,
-            term:''
-        }))
+    onSubmitValue(e){
+        e.preventDefault();
+        if(this.props.term.length > 0 || this.props.term !== undefined){
+            axios.get('https://api.punkapi.com/v2/beers/?beer_name=' + this.state.term)
+            .then(res => this.setState({
+                data:res.data,
+            }))
+        }
+        else return 
     }
     
 
@@ -32,22 +35,38 @@ export default class SearchBar extends Component {
     
 
     render() {
-     
+        
 
        console.log(this.state.term)
+       console.log(this.state.term.length)
        console.log(this.state.data)
+
+       const array = this.state.data
+
         return (
-           
-                <Form onSubmit={this.onSubmitValue}>
+            <Layout>
+            <div>
+                <form onSubmit={this.onSubmitValue}>
                      <Flex>
-                <InputText type='text' placeholder="" value={this.state.term}
+                <InputText type='text' placeholder="" 
                    onChange={this.onInputChange}/>
 
-                <ButtonSearch type='submit' icon='search'/>
+                <ButtonSearch type='submit' icon='search'  onClick={() => this.setState({ active:!this.state.active }) }/>
                 </Flex>
-                </Form>
-                
-         
+   
+                </form>
+            </div>
+       
+                       
+                       <SearchWrapper active={this.state.active}>
+                       <CloseBtn  onClick={() => this.setState({ active:!this.state.active }) }>
+                    
+                    {this.state.active ? 'X':''}
+                  
+                </CloseBtn>
+                           <Result array={array}/>
+                           </SearchWrapper>
+            </Layout>
         )
     }
 }

@@ -4,8 +4,7 @@ import { Header , P } from './Home.style'
 import { Layout , Container } from '../Theme/Grid'
 
 export default class Home extends Component {
-  
- 
+    
   
   render() {
     return (
