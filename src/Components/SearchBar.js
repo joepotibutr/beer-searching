@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { InputText , ButtonSearch , SearchWrapper , CloseBtn } from './SearchBar.style'
+import { ButtonSearch , SearchWrapper , CloseBtn } from './SearchBar.style'
 import { Flex , Layout } from '../Theme/Grid'
 import Result from './Result'
 import axios from 'axios'
+import { Input } from 'semantic-ui-react'
 
 export default class SearchBar extends Component {
     constructor(props){
@@ -53,7 +54,7 @@ export default class SearchBar extends Component {
             <div>
                 <form onSubmit={this.onSubmitValue}>
                      <Flex>
-                        <InputText value={this.state.term} type='text' placeholder="" 
+                        <Input size='massive' value={this.state.term}  placeholder="Search..." 
                         onChange={this.onInputChange}/>
 
                         <ButtonSearch type='submit' icon='search'  onClick={() => this.setState({ active:!this.state.active }) }/>

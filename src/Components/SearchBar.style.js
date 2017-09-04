@@ -2,39 +2,29 @@ import styled from 'styled-components'
 import { Button } from 'semantic-ui-react'
 
 export const InputText = styled.input`
-    background-color:transparent !important;
-    border: none !important;
-    border-bottom: 1px solid #CCC !important;
-    color: white !important;
-    box-sizing: border-box !important;
-    border-radius:0 !important;
-    &:focus {
-        outline: none !important;    
-      }
+   
     `
 
     export const ButtonSearch = styled(Button)`
-      background-color:black !important;
-      color:white !important;
-      transition:.3s !important;
-      &: hover {
-        color: lightblue !important;
-        transform:scale(2) !important;
-      }
+    padding:20px !important;
+
+      
     `
 
     export const SearchWrapper = styled.div`
-      height: ${props => props.active ? '100%':'0'} ;
+      height: 100%;
+      opacity:${props => props.active ? '1':'0'} ;
       width: 100%;
       position: fixed;
-      z-index: 3;
+      z-index: ${props => props.active ? '3':'-1'} ;;
       top: 0;
       left: 0;
-      background-color: white;
+      background-color:antiquewhite;
       transition: 0.7s ease-in-out;
       text-align:center; 
       display:grid;
       grid-template-rows:100%;
+      overflow:auto;
 `
 
       export const CloseBtn = styled.span`

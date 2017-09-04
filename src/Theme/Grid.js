@@ -20,10 +20,10 @@ export const Flex = styled.div`
 export const Layout = styled(Flex)`
     padding:20px;
     margin:0 auto;
-    background:black;
+    
 `
 export const Container = styled.div`
-    background:black;
-    height:700px;
+
+    height:100vh;
     padding-top:100px;
 `
